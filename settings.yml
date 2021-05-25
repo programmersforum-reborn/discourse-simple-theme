@@ -1,0 +1,3 @@
+show_topic_start_date:
+  type: bool 
+  default: true

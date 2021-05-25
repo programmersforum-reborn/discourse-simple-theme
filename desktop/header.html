@@ -1,5 +1,7 @@
 <script type='text/x-handlebars' data-template-name='list/topic-list-item.raw'>
 
+
+
 {{#if bulkSelectEnabled}}
 <td class='star'>
   <input type='checkbox' class='bulk-select'>
@@ -19,7 +21,10 @@
      {{category-link topic.category}}
    {{/if}}
   {{~#if topic.creator ~}}
-  <a href="/users/{{topic.creator.username}}" data-auto-route="true" data-user-card="{{topic.creator.username}}">{{topic.creator.username}}</a> <a href={{topic.url}}>{{format-date topic.createdAt format="tiny"}}</a>
+  <a href="/users/{{topic.creator.username}}" data-auto-route="true" data-user-card="{{topic.creator.username}}">{{topic.creator.username}}</a> 
+    {{#if (theme-setting 'show_topic_start_date')}}
+      <a href={{topic.url}}>{{format-date topic.createdAt format="tiny"}}</a>
+    {{~/if ~}}
   {{~/if ~}}
    {{raw "list/action-list" topic=topic postNumbers=topic.liked_post_numbers className="likes" icon="heart"}}
    </div>
